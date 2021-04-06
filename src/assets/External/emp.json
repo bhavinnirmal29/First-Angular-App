@@ -1,0 +1,5 @@
+[
+    {"empid":"100","name":"scott","dept":"IT","salary":50000},
+    {"empid":"200","name":"tiger","dept":"Accounts","salary":60000},
+    {"empid":"300","name":"martin","dept":"HR","salary":40000}
+]

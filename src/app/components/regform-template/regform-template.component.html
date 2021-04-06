@@ -1,0 +1,56 @@
+<hr>
+<br>
+<!--^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!%?&])[A-Za-z0-9@$!%?&]{4,8}$ PAssword Regex-->
+<h3>Template Driven Form</h3>
+<form #regform="ngForm" name="regForm" (ngSubmit)="RegisterData(regform)">
+    <div>
+        <label>Enter Name : </label>
+        <input type="text" name="name" [(ngModel)]="model.name"
+        #name="ngModel" required/>
+        <span *ngIf="name.errors?.required">Name has to be entered</span>
+    </div>
+    <div>
+        <label>Enter Address : </label>
+        <textarea row="10" cols="30" name="txtaddr" [(ngModel)] = "model.txtaddr" #txtaddr="ngModel" required></textarea>
+        <span *ngIf="txtaddr.errors?.required">Address Cannot be blank</span>
+    </div>
+    <div>
+        <label>Enter Mob No.</label>
+        <input type="number" name="mno" [(ngModel)]="model.mno" #mno="ngModel" pattern="^[0-9]{10}$" required>
+        <span *ngIf="mno.errors?.required">MobNo cannot be blank</span>
+        <span *ngIf="mno.errors?.pattern">MobNo has to be numeric and 10 digits</span>
+    </div>
+    <div>
+        <label>Enter Email</label>
+        <input type="text" name="txtemail" [(ngModel)]="model.txtemail" #txtemail="ngModel" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\[a-z]+\.[a-zA-Z0-9-.]+$" required>
+        <span *ngIf="txtemail.errors?.required">Email Cannot be Blank</span>
+        <span *ngIf="txtemail.errors?.pattern">Invalid Email</span>
+    </div>
+    <div>
+        <label>Enter Password</label>
+        <input type="password" name="txtpass" [(ngModel)]="model.txtpass"
+        #txtpass="ngModel" minlength="4" maxlength="8" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!%?&])[A-Za-z0-9@$!%?&]{4,8}$" required>
+        <span *ngIf="txtpass.errors?.required">Passowrd cannot be blank</span>
+        <span *ngIf="txtpass.errors?.pattern">Password should have 1 uppercase, lower case, digits and special character</span>
+        <span *ngIf="txtpass.errors?.minlength">Minimum Password Length is 4 characters</span>
+    </div>
+    <div>
+        <label>Select Gender</label>
+        <input type="radio" name="gen" [(ngModel)]="model.gen" #gen="ngModel" required value="Male">
+        <input type="radio" name="gen" [(ngModel)]="model.gen" #gen="ngModel" required value="Female">Female
+        <span *ngIf="gen.errors?.required">Select a Gender</span>
+    </div>
+    <div>
+        <label>Select Country</label>
+        <select name="country" [(ngModel)]="model.country" #country="ngModel" required>
+            <option value="">Select</option>
+            <option value="IN">India</option>
+            <option value="US">America</option>
+            <option value="UK">United Kingdom</option>
+        </select>
+        <span *ngIf="country.errors?.required">Select a country</span>
+    </div>
+    <div>
+        <button type="submit" [disabled]="regform.invalid">Register</button>
+    </div>
+</form>

@@ -1,0 +1,19 @@
+<hr>
+<br>
+<h2>One Way Binding</h2>
+<h3>Property Binding</h3>
+<h3>Event Binding</h3>
+<table border="1">
+    <tr>
+        <td>Show Image</td>
+        <td><img [src]="url" [height]="h" [width]="w"></td>
+    </tr>
+    <tr>
+        <td><input type="button" value="click" (click) = "sayHi()"></td>
+        <td><input type="button" value="Increment" (click)="increment()"></td>
+        <td><input type="button" value="Decrement" (click)="decrement()"></td>
+    </tr>
+    <tr>
+        <td><span>Counter Value : {{counter}}</span></td>
+    </tr>
+</table>

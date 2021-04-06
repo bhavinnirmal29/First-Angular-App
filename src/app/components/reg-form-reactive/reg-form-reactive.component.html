@@ -1,0 +1,61 @@
+<h3> Reactive Form with Validation</h3>
+<form [formGroup]="regForm" (ngSubmit)="RegisterData()">
+    <div>
+        <label>Enter Name: </label>
+        <input type="text" formControlName="name1">
+        <span *ngIf="regForm.controls['name1'].hasError('required')">Name cannot be Blank</span>
+    </div>
+    <div>
+        <label>Enter Address: </label>
+        <textarea row="15" cols="20" formControlName="txtaddr"></textarea>
+        <span *ngIf="regForm.controls['txtaddr'].hasError('required')">Address cannot be Blank</span>
+    </div>
+    <div>
+        <label>Enter Email: </label>
+        <input type="email" formControlName="txtemail">
+        <span *ngIf="regForm.controls['txtemail'].hasError('required')">Email cannot be Blank</span>
+        <span *ngIf="regForm.controls['txtemail'].hasError('pattern')">Invalid Email</span>  
+    </div>
+    <div>
+        <label>Enter Mobile No: </label>
+        <input type="number" formControlName="txtmobNo">
+        <span *ngIf="regForm.controls['txtmobNo'].hasError('required')">Mobile No. cannot be Blank</span>
+        <span *ngIf="regForm.controls['txtmobNo'].hasError('pattern')">Mobile No. should be 10 digits</span>
+    </div>
+    <div>
+        <label>Enter Password: </label>
+        <input type="password" formControlName="txtpwd">
+        <span *ngIf="regForm.controls['txtpwd'].hasError('required')">Password cannot be Blank</span>
+        <span *ngIf="regForm.controls['txtpwd'].hasError('minlength')">Password Length should be 4 digit</span>
+        <span *ngIf="regForm.controls['txtpwd'].hasError('maxlength')">Password Length should be less than = 8 digit</span>
+        <span *ngIf="regForm.controls['txtpwd'].hasError('pattern')">Invalid Pattern</span>
+    </div>
+    <div>
+        <label>Select Gender: </label>
+        <input type="radio" formControlName="txtgender" value="Male">Male&nbsp;&nbsp;
+        <input type="radio" formControlName="txtgender" value="Female">Female
+        <span *ngIf="regForm.controls['txtgender'].hasError('required')">Select a gender</span>
+    </div>
+    <div>
+        <label>Select Country</label>
+        <select formControlName="nation">
+            <option value="">Select</option>
+            <option value="IN">India</option>
+            <option value="US">America</option>
+            <option value="UK">United Kingdom</option>
+        </select>
+        <span *ngIf="regForm.controls['nation'].hasError('required')">Select a country</span>
+    </div>
+    <div formGroupName="mycheckboxgroup">
+        <label>Select Hobbies</label>
+        <input type="checkbox" formControlName="hobby1" id="hobby1" value="Reading">Reading
+        <input type="checkbox" formControlName="hobby2" id="hobby2" value="Sports">Sports
+        <input type="checkbox" formControlName="hobby3" id="hobby3" value="Skiing">Skiing
+        <input type="checkbox" formControlName="hobby4" id="hobby4" value="Diving">Diving
+
+        <span *ngIf="regForm.controls['mycheckboxgroup'].errors && regForm.controls['mycheckboxgroup'].errors.requireCheckboxToBeChecked">At least one checkbox is required to check</span>
+    </div>
+    <div>
+        <button type="submit" value="Register">Register</button>
+    </div>
+</form>

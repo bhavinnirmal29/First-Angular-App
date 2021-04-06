@@ -1,0 +1,93 @@
+<h2>Pizza Form Template</h2>
+<div>
+    <form #pizzaForm="ngForm" name="pizzaForm" (ngSubmit)="orderPizza(pizzaForm)">
+        <table border="1">
+            <tr>
+                <td colspan="2">Pizza Order System</td>
+                <td>Errors</td>
+            </tr>
+            <tr>
+                <td>Pizza Name:</td>
+                <td>
+                    <select name="pname" [(ngModel)]="model1.pname" #pname="ngModel"  required>
+                        <option value="">Select</option>
+                        <option value="Veggie Delight Pizza">Veggie Delight Pizza</option>
+                        <option value="Margherita Pizza">Margherita Pizza</option>
+                        <option value="Veg Pizza">Veg Pizza</option>
+                        <option value="Mushroom Pizza">Mushroom Pizza</option>
+                        <option value="Pasta Pizza">Pasta Pizza</option>
+                        <option value="BBQ Chicken Pizza">BBQ Chicken Pizza</option>
+                        <option value="NonVeg Pizza">Non Veg Pizza</option>
+                    </select>
+                </td>
+                <td><span *ngIf="pname.errors?.required">Pizza Name Required</span></td>
+            </tr>
+                <br>
+            <tr>
+                <td>Pizza Type : </td>
+                <td>
+                    <input type="radio" name="ptype" [(ngModel)]="model1.ptype" #ptype="ngModel" value="Veg" required>Veg
+                    &nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="ptype" [(ngModel)]="model1.ptype" #ptype="ngModel" value="Non-Veg" required>Non-Veg
+                </td>
+                <td><span *ngIf="ptype.errors?.required">Pizza Type Required</span></td>
+            </tr>
+            <tr>
+                <td>Pizza Size : </td>
+                <td>
+                    <input type="radio" name="psize" [(ngModel)]="model1.psize" #psize="ngModel" value="S" required>Small
+                    &nbsp;&nbsp;
+                    <input type="radio" name="psize" [(ngModel)]="model1.psize" #psize="ngModel" value="M" required>Medium
+                    &nbsp;&nbsp;
+                    <input type="radio" name="psize" [(ngModel)]="model1.psize" #psize="ngModel" value="L" required>Large
+                </td>
+                <td><span *ngIf="psize.errors?.required">Pizza Size Required</span></td>
+            </tr>
+            <tr>
+                <td>Toppings : </td>
+                <td>
+                    <input type="checkbox" name="toppings1" id="top1" [(ngModel)]="model1.toppings1" #toppings1="ngModel" value="onion">Onion&nbsp;&nbsp;
+                    <input type="checkbox" name="toppings2" id="top1" [(ngModel)]="model1.toppings2" #toppings2="ngModel" value="capsicum">Capsicum&nbsp;&nbsp;
+                    <input type="checkbox" name="toppings3" id="top1" [(ngModel)]="model1.toppings3" #toppings3="ngModel" value="tomato">Tomato&nbsp;&nbsp;
+                    <input type="checkbox" name="toppings4" id="top1" [(ngModel)]="model1.toppings4" #toppings4="ngModel" value="paneer">Paneer&nbsp;&nbsp;
+                </td>
+                <td><span (focusout)="checkToppings(pizzaForm)">{{toppingStatus}}</span></td>
+            </tr>
+            <tr>
+                <td>Quantity : </td>
+                <td><input type="text" name="qty" [(ngModel)]="model1.qty" #qty="ngModel" required></td>
+                <td><span *ngIf="qty.errors?.required">Pizza Quantity Required</span></td>
+            </tr>
+            <tr>
+                <button type="submit" [disabled]="pizzaForm.invalid">ORDER</button>
+            </tr>
+        </table>
+    </form>
+    <hr>
+    <table border="1">
+        <tr>
+            <td>Pizza Name&nbsp;&nbsp;</td>
+            <td>Pizza Type&nbsp;&nbsp;</td>
+            <td>Pizza Size&nbsp;&nbsp;</td>
+            <td>Pizza Toppings&nbsp;&nbsp;</td>
+            <td>Pizza Quantity&nbsp;&nbsp;</td>
+        </tr>
+        <tr>
+            <td>
+                {{model1.pname}}&nbsp;&nbsp;
+            </td>
+            <td>
+                {{model1.ptype}}&nbsp;&nbsp;
+            </td>
+            <td>
+                {{model1.psize}}&nbsp;&nbsp;
+            </td>
+            <td>
+                {{model1.toppings.capsicum}}&nbsp;&nbsp;
+            </td> 
+            <td>
+                {{model1.qty}}&nbsp;&nbsp;
+            </td>
+        </tr>
+    </table>
+</div>

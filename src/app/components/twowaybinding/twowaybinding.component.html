@@ -1,0 +1,62 @@
+<hr>
+<h2>Simple Add Using Two way binding and Span Tag Focusout</h2>
+<br>
+<table border="1">
+    <tr>
+        <td>Enter Name</td>
+        <td><input type="text" [(ngModel)]="fname"></td>
+    </tr>
+    <tr>
+        <td>Binded Value</td>
+        <td><b>My Name is : {{fname}}</b></td>
+    </tr>
+    <tr>
+        <td>Enter Number 1 : </td>
+        <td><input type="text" [(ngModel)]="num1" (keyup)="addMethod()"></td>
+    </tr>
+    <tr>
+        <td>Enter Number 2 : </td>
+        <td><input type="text" [(ngModel)]="num2" (keyup)="addMethod()"></td>
+    </tr>
+    <tr>
+        <td>Result</td>
+        <td (onchange)="addMethod()">{{convertToInt(num1)+convertToInt(num2)}}</td>
+    </tr>
+    <tr>
+        <td>Result Using Span</td>
+        <td><span>{{result}}</span></td>
+    </tr>
+    <tr>
+        <input type="button" value="Show Value" (click)="showValue()"/>
+    </tr>
+</table>
+
+<hr>
+<br>
+<h2>Gross Salary Using Two Way Binding</h2>
+<br>
+Enter Salary : 
+<input type="text" [(ngModel)]="basic_sal"/>
+<table border="1">
+    <tr>
+        <th>Basic Salary</th>
+        <th>DA</th>
+        <th>PF</th>
+        <th>Conveyence</th>
+        <th>HRA</th>
+        <th>Gross Salary</th>
+        <th>Net Salary</th>
+    </tr>
+    <tr>
+        
+        <td>{{basic_sal}}</td>
+        <td>{{convertToInt(basic_sal *(10/100))}}</td>
+        <td>{{convertToInt(basic_sal * (12.5/100))}}</td>
+        <td>{{convertToInt(basic_sal * (8/100))}}</td>
+        <td>{{convertToInt(basic_sal *(30/100))}}</td>
+        <td>{{convertToInt(basic_sal)+convertToInt(basic_sal *(10/100))+convertToInt(basic_sal * (8/100))+convertToInt(basic_sal *(30/100))}}</td>
+        <td>{{convertToInt(basic_sal)+convertToInt(basic_sal *(10/100))+convertToInt(basic_sal * (8/100))+convertToInt(basic_sal *(30/100))-convertToInt(basic_sal * (12.5/100))}}</td>
+    </tr>  
+</table>
+<br>
+<hr>
